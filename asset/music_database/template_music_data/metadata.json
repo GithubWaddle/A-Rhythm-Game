@@ -1,0 +1,14 @@
+{
+	"musicId": "__template",
+	"title": "The Template Song",
+	"composer": "A Rhythm Game!",
+	"relativePathToMusicSnippet": "",
+	"relativePathToMusicThumbnail": "",
+	"charts": {
+		{
+			"relativePathToChart": "charts/a_rhythm_chart.rhythmchart.json",
+			"relativePathToBackground": "",
+			"relativePathToFullMusic": ""
+		}
+	}
+}
