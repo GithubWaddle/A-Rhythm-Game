@@ -4,11 +4,10 @@
 	"composer": "A Rhythm Game!",
 	"relativePathToMusicSnippet": "",
 	"relativePathToMusicThumbnail": "",
-	"charts": {
+	"charts":
 		{
 			"relativePathToChart": "charts/a_rhythm_chart.rhythmchart.json",
 			"relativePathToBackground": "",
 			"relativePathToFullMusic": ""
 		}
-	}
 }
