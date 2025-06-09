@@ -1,0 +1,514 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgrdwvcapump3"]
+
+[ext_resource type="Script" uid="uid://dhlafy2ppthpx" path="res://source/menus/music_editor/music_editor_menu.gd" id="1_q1sed"]
+[ext_resource type="Texture2D" uid="uid://bvwwhvllv6wh1" path="res://icon.svg" id="2_oj74t"]
+[ext_resource type="Script" uid="uid://c0nq55esx58ta" path="res://source/menus/music_editor/music_metadata_bar.gd" id="3_oj74t"]
+[ext_resource type="Shader" uid="uid://bmx25b474s06i" path="res://source/menus/music_editor/SCRAP_turn_white_shader.gdshader" id="3_wkdwu"]
+[ext_resource type="FontFile" uid="uid://bdvqhbceafmov" path="res://asset/font/inter/Inter-V.ttf" id="4_mypji"]
+[ext_resource type="Script" uid="uid://bsso7gdbhgr28" path="res://source/menus/music_editor/music_chart_select.gd" id="6_wkdwu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fqehb"]
+shader = ExtResource("3_wkdwu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0fys7"]
+font = ExtResource("4_mypji")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eoujs"]
+font = ExtResource("4_mypji")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[node name="MusicEditorMenu" type="Node"]
+script = ExtResource("1_q1sed")
+metadata/_custom_type_script = "uid://ctpq7vl11iekn"
+
+[node name="BackButton" type="TextureButton" parent="."]
+offset_right = 128.0
+offset_bottom = 128.0
+texture_normal = ExtResource("2_oj74t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MetadataEditor" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/MetadataEditor"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+
+[node name="MetadataList" type="VBoxContainer" parent="HBoxContainer/MetadataEditor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MetadataBar" type="Control" parent="HBoxContainer/MetadataEditor/MetadataList" node_paths=PackedStringArray("metadata_value_text_edit")]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("3_oj74t")
+key = "key1"
+metadata_value_text_edit = NodePath("MetadataElements/MetadataValue")
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="MetadataElements" type="HBoxContainer" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MetadataName" type="Label" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "KEY 1"
+label_settings = SubResource("LabelSettings_0fys7")
+
+[node name="MetadataValue" type="TextEdit" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MetadataBar2" type="Control" parent="HBoxContainer/MetadataEditor/MetadataList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar2"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="MetadataElements" type="HBoxContainer" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MetadataName" type="Label" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar2/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "METADATA KEY"
+label_settings = SubResource("LabelSettings_0fys7")
+
+[node name="MetadataValue" type="TextEdit" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar2/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MetadataBar3" type="Control" parent="HBoxContainer/MetadataEditor/MetadataList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar3"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="MetadataElements" type="HBoxContainer" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MetadataName" type="Label" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar3/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "METADATA KEY"
+label_settings = SubResource("LabelSettings_0fys7")
+
+[node name="MetadataValue" type="TextEdit" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar3/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MetadataBar4" type="Control" parent="HBoxContainer/MetadataEditor/MetadataList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar4"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="MetadataElements" type="HBoxContainer" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MetadataName" type="Label" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar4/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "METADATA KEY"
+label_settings = SubResource("LabelSettings_0fys7")
+
+[node name="MetadataValue" type="TextEdit" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar4/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MetadataBar5" type="Control" parent="HBoxContainer/MetadataEditor/MetadataList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar5"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="MetadataElements" type="HBoxContainer" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MetadataName" type="Label" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar5/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "METADATA KEY"
+label_settings = SubResource("LabelSettings_0fys7")
+
+[node name="MetadataValue" type="TextEdit" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar5/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MetadataBar6" type="Control" parent="HBoxContainer/MetadataEditor/MetadataList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar6"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="MetadataElements" type="HBoxContainer" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MetadataName" type="Label" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar6/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "METADATA KEY"
+label_settings = SubResource("LabelSettings_0fys7")
+
+[node name="MetadataValue" type="TextEdit" parent="HBoxContainer/MetadataEditor/MetadataList/MetadataBar6/MetadataElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ChartSelect" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/ChartSelect"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+
+[node name="ScrollContaner" type="ScrollContainer" parent="HBoxContainer/ChartSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+draw_focus_border = true
+
+[node name="ChartList" type="VBoxContainer" parent="HBoxContainer/ChartSelect/ScrollContaner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ChartSelect" type="Control" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+script = ExtResource("6_wkdwu")
+chart_id = "1"
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="ChartData" type="HBoxContainer" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChartCover" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_oj74t")
+
+[node name="ChartDifficulty" type="Label" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+label_settings = SubResource("LabelSettings_eoujs")
+horizontal_alignment = 1
+
+[node name="ChartSelect2" type="Control" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect2"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="ChartData" type="HBoxContainer" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChartCover" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect2/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_oj74t")
+
+[node name="ChartDifficulty" type="Label" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect2/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2"
+label_settings = SubResource("LabelSettings_eoujs")
+horizontal_alignment = 1
+
+[node name="ChartSelect3" type="Control" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect3"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="ChartData" type="HBoxContainer" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChartCover" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect3/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_oj74t")
+
+[node name="ChartDifficulty" type="Label" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect3/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3"
+label_settings = SubResource("LabelSettings_eoujs")
+horizontal_alignment = 1
+
+[node name="ChartSelect4" type="Control" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect4"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="ChartData" type="HBoxContainer" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChartCover" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect4/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_oj74t")
+
+[node name="ChartDifficulty" type="Label" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect4/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4"
+label_settings = SubResource("LabelSettings_eoujs")
+horizontal_alignment = 1
+
+[node name="ChartSelect5" type="Control" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect5"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="ChartData" type="HBoxContainer" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChartCover" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect5/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_oj74t")
+
+[node name="ChartDifficulty" type="Label" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect5/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+label_settings = SubResource("LabelSettings_eoujs")
+horizontal_alignment = 1
+
+[node name="ChartSelect6" type="Control" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect6"]
+material = SubResource("ShaderMaterial_fqehb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oj74t")
+expand_mode = 1
+
+[node name="ChartData" type="HBoxContainer" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChartCover" type="TextureRect" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect6/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_oj74t")
+
+[node name="ChartDifficulty" type="Label" parent="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect6/ChartData"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "6"
+label_settings = SubResource("LabelSettings_eoujs")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="metadata_set" from="HBoxContainer/MetadataEditor/MetadataList/MetadataBar" to="." method="_on_metadata_set"]
+[connection signal="focus_exited" from="HBoxContainer/MetadataEditor/MetadataList/MetadataBar/MetadataElements/MetadataValue" to="HBoxContainer/MetadataEditor/MetadataList/MetadataBar" method="_on_value_set"]
+[connection signal="selected" from="HBoxContainer/ChartSelect/ScrollContaner/ChartList/ChartSelect" to="." method="_on_chart_select"]
